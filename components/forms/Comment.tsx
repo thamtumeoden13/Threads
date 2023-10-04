@@ -16,9 +16,9 @@ import { Button } from '@/components/ui/button'
 
 import { usePathname, useRouter } from 'next/navigation';
 
-import { updateUser } from '@/lib/actions/user.action';
+import { updateUser } from '@/lib/actions/user.actions';
 import { CommentValidation } from '@/lib/validatioins/thread';
-import { addCommentoThread } from '@/lib/actions/thread.action';
+import { addCommentoThread } from '@/lib/actions/thread.actions';
 import Image from 'next/image';
 
 interface Props {

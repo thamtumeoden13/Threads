@@ -1,5 +1,5 @@
 
-import { fetchUser } from "@/lib/actions/user.action";
+import { fetchUser } from "@/lib/actions/user.actions";
 import { currentUser } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 import ProfileHeader from "@/components/shared/ProfileHeader";

@@ -16,9 +16,9 @@ import { Button } from '@/components/ui/button'
 
 import { usePathname, useRouter } from 'next/navigation';
 
-import { updateUser } from '@/lib/actions/user.action';
+import { updateUser } from '@/lib/actions/user.actions';
 import { ThreadValidation } from '@/lib/validatioins/thread';
-import { createThread } from '@/lib/actions/thread.action';
+import { createThread } from '@/lib/actions/thread.actions';
 
 interface Props {
     user: {
