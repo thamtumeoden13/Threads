@@ -13,6 +13,8 @@ async function Page() {
 
     if (!userInfo?.onboarded) redirect('/onboarding');
 
+    console.log('userInfo._id', userInfo)
+
     return (
         <>
             <h1 className="head-text">
