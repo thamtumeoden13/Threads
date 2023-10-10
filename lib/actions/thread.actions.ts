@@ -57,8 +57,6 @@ interface Params {
 
 export async function createThread({ text, author, communityId, path }: Params
 ) {
-    console.log('createdThread:_params ', { text, author, communityId, path })
-
     try {
         connectToDB();
 
@@ -66,13 +64,13 @@ export async function createThread({ text, author, communityId, path }: Params
             { id: communityId },
             { _id: 1 }
         );
-        console.log('communityIdObject', communityIdObject)
+
         const createdThread = await Thread.create({
             text,
             author,
             community: communityIdObject, // Assign communityId if provided, or leave it null for personal account
         });
-        console.log('createdThread: ', createdThread)
+
         // Update User model
         await User.findByIdAndUpdate(author, {
             $push: { threads: createdThread._id },
@@ -160,9 +158,9 @@ export async function deleteThread(id: string, path: string): Promise<void> {
 }
 
 export async function fetchThreadById(threadId: string) {
+    connectToDB();
 
     try {
-        connectToDB();
         const thread = await Thread.findById(threadId)
             .populate({
                 path: "author",
@@ -208,9 +206,9 @@ export async function addCommentToThread(
     userId: string,
     path: string
 ) {
+    connectToDB();
 
     try {
-        connectToDB();
         // Find the original thread by its ID
         const originalThread = await Thread.findById(threadId);
 

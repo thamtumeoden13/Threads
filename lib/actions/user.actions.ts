@@ -153,7 +153,7 @@ export async function fetchUsers({
     }
 }
 
-export async function getActitities(userId: string) {
+export async function getActivity(userId: string) {
     try {
         connectToDB();
 
@@ -176,8 +176,8 @@ export async function getActitities(userId: string) {
         });
 
         return replies;
-
-    } catch (error: any) {
-        throw new Error(`Failed to get activity: ${error.message}`)
+    } catch (error) {
+        console.error("Error fetching replies: ", error);
+        throw error;
     }
 }
