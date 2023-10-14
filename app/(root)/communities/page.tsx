@@ -4,6 +4,7 @@ import { currentUser } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 import { fetchCommunities } from "@/lib/actions/community.actions";
 import CommunityCard from "@/components/cards/CommunityCard";
+import Searchbar from "@/components/shared/SearchBar";
 
 async function Page() {
     const user = await currentUser();
@@ -21,17 +22,19 @@ async function Page() {
         sortBy: 'desc'
     })
 
-    console.log('result',JSON.stringify( result))
+    console.log('result', JSON.stringify(result))
 
     return (
-        <section>
-            <h1 className="head-text mb-10">
-                Search
+        <>
+            <h1 className="head-text">
+                Communites
             </h1>
 
-            {/* Search Bar */}
+            <div className='mt-5'>
+                <Searchbar routeType='communities' />
+            </div>
 
-            <div className='mt-14 flex flex-col gap-9 '>
+            <section className='mt-9 flex flex-wrap gap-4'>
                 {result.communities.length === 0 ? (
                     <div className="no-result">No User</div>
                 ) : (
@@ -49,8 +52,8 @@ async function Page() {
                         ))}
                     </>
                 )}
-            </div>
-        </section>
+            </section>
+        </>
     )
 }
 
